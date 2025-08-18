@@ -1,0 +1,14 @@
+public class OddEven {
+    public static void main(String[] args) {
+
+        System.out.print(" Number ");
+        int num = 25;
+
+        // Condition with arithmetic
+        if (num % 2 == 0) {
+            System.out.println(num + " is even.");
+        } else {
+            System.out.println(num + " is odd.");
+        }
+    }
+}
