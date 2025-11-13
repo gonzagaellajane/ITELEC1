@@ -1,0 +1,538 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Welcome to Android UI!"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+ACT 2
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+
+<TextView
+    android:id="@+id/textViewTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Enter your name:"
+    android:textSize="18sp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="50dp"
+    tools:ignore="HardcodedText" />
+
+<EditText
+    android:id="@+id/editTextName"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="30dp"
+    android:layout_marginTop="20dp"
+    android:hint="Type here..."
+    android:minHeight="48dp"
+    android:padding="10dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+    tools:ignore="Autofill,HardcodedText,TextFields,VisualLintTextFieldSize" />
+
+<TextView
+    android:id="@+id/textViewFooter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Thank you!"
+    android:textSize="16sp"
+    app:layout_constraintTop_toBottomOf="@id/editTextName"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="30dp"
+    tools:ignore="HardcodedText" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+Task 3
+<TextView
+    android:id="@+id/tvInstructions"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/enter_your_name_and_select_a_country"
+    android:textSize="18sp"
+    android:paddingBottom="10dp"/>
+
+
+<EditText
+    android:id="@+id/etName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:autofillHints=""
+    android:hint="@string/enter_your_name"
+    android:inputType="textPersonName"
+    android:minHeight="48dp"
+    android:padding="8dp"
+    android:textColorHint="#8D6E63"
+    tools:ignore="VisualLintTextFieldSize" />
+
+
+<AutoCompleteTextView
+    android:id="@+id/autoCountry"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Select or type a country"
+    android:completionThreshold="1"
+    android:padding="8dp"/>
+
+
+
+<Spinner
+    android:id="@+id/spinnerOptions"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="48dp"
+    android:padding="8dp" />
+nextt
+
+<application
+    android:allowBackup="true"
+    android:dataExtractionRules="@xml/data_extraction_rules"
+    android:fullBackupContent="@xml/backup_rules"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/Theme.MainActivity">
+    <activity
+        android:name=".MainActivity"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+</application>
+nextt
+
+package com.example.mainactivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+
+    TextView tvInstructions = findViewById(R.id.tvInstructions);
+
+
+    EditText etName = findViewById(R.id.etName);
+
+    AutoCompleteTextView autoCountry = findViewById(R.id.autoCountry);
+    String[] countries = {"United States", "Canada", "Mexico", "India", "China", "Germany", "France"};
+    ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, countries);
+    autoCountry.setAdapter(countryAdapter);
+    autoCountry.setThreshold(1);
+
+
+    Spinner spinner = findViewById(R.id.spinnerOptions);
+    String[] options = {"Option 1", "Option 2", "Option 3", "Option 4", "Option 5"};
+    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, options);
+    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    spinner.setAdapter(spinnerAdapter);
+}
+}
+
+TASK 4
+<Button
+    android:id="@+id/btnStandard"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Standard Button"
+    android:padding="10dp"
+    android:layout_marginBottom="16dp"/>
+
+
+<ImageButton
+    android:id="@+id/btnImage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_launcher_foreground"
+    android:contentDescription="Image Button"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:layout_marginBottom="16dp"/>
+
+
+<ToggleButton
+    android:id="@+id/btnToggle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textOff="OFF"
+    android:textOn="ON"
+    android:layout_marginBottom="16dp"/>
+nextt
+
+package com.example.mainactivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ToggleButton;
+import android.widget.Toast;
+import android.view.View;
+
+public class MainActivity extends AppCompatActivity {
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    
+    Button btnStandard = findViewById(R.id.btnStandard);
+    ImageButton btnImage = findViewById(R.id.btnImage);
+    ToggleButton btnToggle = findViewById(R.id.btnToggle);
+
+    
+    btnStandard.setOnClickListener(v ->
+            Toast.makeText(MainActivity.this, "Standard Button clicked!", Toast.LENGTH_SHORT).show()
+    );
+
+    btnImage.setOnClickListener(v ->
+            Toast.makeText(MainActivity.this, "Image Button clicked!", Toast.LENGTH_SHORT).show()
+    );
+
+    btnToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        if (isChecked) {
+            Toast.makeText(MainActivity.this, "Toggle ON", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MainActivity.this, "Toggle OFF", Toast.LENGTH_SHORT).show();
+        }
+    });
+}
+}
+
+TASK 5 
+
+package com.example.mainactivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.ViewSwitcher;
+
+public class MainActivity extends AppCompatActivity {
+
+int[] images = {R.drawable.image1, R.drawable.image2};
+int currentIndex = 0;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+
+    ImageView imageView = findViewById(R.id.imageView);
+    imageView.setImageResource(R.drawable.image1);
+
+
+    ImageSwitcher imageSwitcher = findViewById(R.id.imageSwitcher);
+    imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+        @Override
+        public View makeView() {
+            ImageView imageView = new ImageView(getApplicationContext());
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setLayoutParams(new ImageSwitcher.LayoutParams(
+                    ImageSwitcher.LayoutParams.MATCH_PARENT,
+                    ImageSwitcher.LayoutParams.MATCH_PARENT
+            ));
+            return imageView;
+        }
+    });
+
+
+    imageSwitcher.setImageResource(images[currentIndex]);
+
+
+    Button btnSwitchImage = findViewById(R.id.btnSwitchImage);
+    btnSwitchImage.setOnClickListener(v -> {
+
+        currentIndex = (currentIndex + 1) % images.length;
+        imageSwitcher.setImageResource(images[currentIndex]);
+    });
+}
+}
+
+next
+
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:src="@drawable/ic_launcher_foreground"
+    android:contentDescription="Static Image"
+    android:layout_marginBottom="20dp" />
+
+
+<ImageSwitcher
+    android:id="@+id/imageSwitcher"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:layout_marginBottom="20dp" />
+
+
+<Button
+    android:id="@+id/btnSwitchImage"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Switch Image" />
+
+
+TASK 6 
+package com.example.mainactivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+public class MainActivity extends AppCompatActivity {
+
+int[] images = {R.drawable.image1, R.drawable.image2}; // ImageSwitcher images
+int currentIndex = 0;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    
+    EditText etName = findViewById(R.id.etName);
+
+    AutoCompleteTextView autoCountry = findViewById(R.id.autoCountry);
+    String[] countries = {"United States", "Canada", "Mexico", "India", "China", "Germany", "France"};
+    ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(this,
+            android.R.layout.simple_list_item_1, countries);
+    autoCountry.setAdapter(countryAdapter);
+    autoCountry.setThreshold(1);
+
+    Spinner spinner = findViewById(R.id.spinnerOptions);
+    String[] options = {"Option 1", "Option 2", "Option 3", "Option 4", "Option 5"};
+    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this,
+            android.R.layout.simple_spinner_item, options);
+    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    spinner.setAdapter(spinnerAdapter);
+
+    
+    ImageSwitcher imageSwitcher = findViewById(R.id.imageSwitcher);
+    imageSwitcher.setFactory(() -> {
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setLayoutParams(new ImageSwitcher.LayoutParams(
+                ImageSwitcher.LayoutParams.MATCH_PARENT,
+                ImageSwitcher.LayoutParams.MATCH_PARENT));
+        return imageView;
+    });
+    imageSwitcher.setImageResource(images[currentIndex]);
+
+   
+    Button btnSwitchImage = findViewById(R.id.btnSwitchImage);
+    btnSwitchImage.setOnClickListener(v -> {
+        currentIndex = (currentIndex + 1) % images.length;
+        imageSwitcher.setImageResource(images[currentIndex]);
+    });
+
+   
+    Button btnSubmit = findViewById(R.id.btnSubmit);
+    btnSubmit.setOnClickListener(v -> {
+        String name = etName.getText().toString();
+        String country = autoCountry.getText().toString();
+        String selectedOption = spinner.getSelectedItem().toString();
+        Toast.makeText(this, "Name: " + name + "\nCountry: " + country +
+                "\nOption: " + selectedOption, Toast.LENGTH_SHORT).show();
+    });
+
+    
+    ToggleButton btnToggle = findViewById(R.id.btnToggle);
+    btnToggle.setOnClickListener(v -> {
+        if (btnToggle.isChecked()) {
+            Toast.makeText(this, "Dark Mode ON", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Dark Mode OFF", Toast.LENGTH_SHORT).show();
+        }
+    });
+
+  
+    ImageButton btnImage = findViewById(R.id.btnImage);
+    btnImage.setOnClickListener(v ->
+            Toast.makeText(this, "ImageButton clicked", Toast.LENGTH_SHORT).show());
+}
+}
+
+next
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+
+    <TextView
+        android:id="@+id/tvInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fill_your_information"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="16dp" />
+
+
+    <TextView
+        android:id="@+id/tvNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textColor="#333333"
+        tools:ignore="TextViewEdits" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:autofillHints=""
+        android:background="@android:drawable/edit_text"
+        android:hint="@string/enter_your_full_name"
+        android:labelFor="@id/tvNameLabel"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#757575"
+        tools:ignore="TextFields,VisualLintTextFieldSize" />
+
+
+    <TextView
+        android:id="@+id/tvCountryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country"
+        android:textColor="#333333" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@android:drawable/edit_text"
+        android:hint="@string/select_or_type_your_country"
+        android:labelFor="@id/tvCountryLabel"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#757575"
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <Spinner
+        android:id="@+id/spinnerOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:minHeight="48dp" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/image1"
+        android:contentDescription="@string/profile_illustration"
+        android:layout_marginBottom="20dp" />
+
+
+    <ImageSwitcher
+        android:id="@+id/imageSwitcher"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp" />
+
+
+    <Button
+        android:id="@+id/btnSwitchImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/switch_image"
+        android:minHeight="48dp"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="@string/switch_between_images"
+        tools:ignore="VisualLintButtonSize" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit_information"
+        android:minHeight="48dp"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="@string/submit_the_form"
+        tools:ignore="VisualLintButtonSize" />
+
+
+    <ToggleButton
+        android:id="@+id/btnToggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOff="@string/dark_mode_off"
+        android:textOn="@string/dark_mode_on"
+        android:backgroundTint="#BB86FC"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="@string/toggle_dark_mode"
+        tools:ignore="VisualLintButtonSize" />
+
+    <ImageButton
+        android:id="@+id/btnImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/upload_profile_picture"
+        android:layout_marginBottom="20dp" />
+
+</LinearLayout>
